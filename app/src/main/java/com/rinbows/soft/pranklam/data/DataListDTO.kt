@@ -3,6 +3,7 @@ package com.rinbows.soft.pranklam.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.rinbows.soft.pranklam.tools.AppConstant
+import java.io.Serializable
 
 @Entity(tableName = AppConstant.TABLE_NAME_SOUNDS)
 data class DataListDTO(
@@ -14,4 +15,4 @@ data class DataListDTO(
     val mp3Url: String,
     val preUrl: String,
     val title: String
-) {}
+) : Serializable {}

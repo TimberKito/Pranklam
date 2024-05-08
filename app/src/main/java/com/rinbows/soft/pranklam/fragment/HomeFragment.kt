@@ -4,10 +4,12 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
+import com.rinbows.soft.pranklam.activity.DataActivity
 import com.rinbows.soft.pranklam.adapter.HomeAdapter
 import com.rinbows.soft.pranklam.data.CategoryDTO
 import com.rinbows.soft.pranklam.databinding.HomeFragmentBinding
 import com.rinbows.soft.pranklam.listener.HomeClickListener
+import com.rinbows.soft.pranklam.tools.AppConstant
 import com.rinbows.soft.pranklam.tools.DataTools
 
 class HomeFragment : BaseFragment() {
@@ -30,12 +32,13 @@ class HomeFragment : BaseFragment() {
 
         binding.recyclerHome.run {
             layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter = HomeAdapter(requireContext(), categoryList, object : HomeClickListener {
+            adapter = HomeAdapter(requireContext(), categoryList,
+
+                object : HomeClickListener {
                 override fun onItemClick(position: Int, categoryDTO: CategoryDTO) {
-//                        val intent = Intent(requireContext(), DetailsActivity::class.java)
-//                        intent.putExtra("KEY_EXTRA", categoryModel)
-//                        startActivity(intent)
-                    Log.d("HomeOnClick", "item has been click!")
+                    val intent = Intent(requireContext(), DataActivity::class.java)
+                    intent.putExtra(AppConstant.KEY_EXTRA, categoryDTO)
+                    startActivity(intent)
                 }
             })
         }

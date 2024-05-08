@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.DataActivity" />
+        <activity android:name=".activity.PlayerActivity" />
     </application>
 
 </manifest>

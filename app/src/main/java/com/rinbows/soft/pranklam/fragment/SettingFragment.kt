@@ -4,9 +4,16 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.rinbows.soft.pranklam.R
+import com.rinbows.soft.pranklam.data.AppDatabase
 import com.rinbows.soft.pranklam.databinding.SettingFragmentBinding
+import com.rinbows.soft.pranklam.tools.AppConstant
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SettingFragment : BaseFragment(), View.OnClickListener {
     private lateinit var binding: SettingFragmentBinding
@@ -44,8 +51,19 @@ class SettingFragment : BaseFragment(), View.OnClickListener {
             }
 
             binding.setLayoutDelete -> {
-                Log.d("onclick", "has been click！")
+                CoroutineScope(Dispatchers.IO).launch {
+                    AppDatabase.dataBase.getDataListDao().deleteAllCollect()
+                }
+                sendDatabaseUpdatedBroadcast()
+                Toast.makeText(
+                    requireActivity(), "Cleared all collections successfully.", Toast.LENGTH_SHORT
+                ).show()
             }
         }
+    }
+
+    private fun sendDatabaseUpdatedBroadcast() {
+        val intent = Intent(AppConstant.ACTION_DATABASE_UPDATED)
+        LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
     }
 }
