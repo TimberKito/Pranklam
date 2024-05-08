@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Pranklam</string>
+
+    <string name="home">Home</string>
+    <string name="collect">Collect</string>
+    <string name="setting">Setting</string>
+    <string name="my_collect">My Collection</string>
+    <string name="app_setting">App Setting</string>
+    <string name="rating_us">Go to the store to evaluate application</string>
+    <string name="app_share">Share this application</string>
+    <string name="setting_delete">Clear all my collections</string>
+    <string name="link">https://play.google.com/store/apps/details?id=</string>
 </resources>
