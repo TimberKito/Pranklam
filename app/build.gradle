@@ -8,6 +8,16 @@ android {
     namespace 'com.rinbows.soft.pranklam'
     compileSdk 34
 
+
+    signingConfigs {
+        debug {
+            storeFile file('D:\\Android_Files\\Pranklam\\app\\src\\main\\info\\key_pranklamda_test.jks')
+            storePassword 'key123456'
+            keyPassword 'key123456'
+            keyAlias 'key0_pranklamda_test'
+        }
+    }
+
     defaultConfig {
         applicationId "com.rinbows.soft.pranklam"
         minSdk 22
@@ -20,7 +30,12 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

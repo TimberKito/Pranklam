@@ -19,3 +19,23 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keepclassmembers class com.rinbows.soft.pranklam.tools.AppConstant{
+    public static final java.lang.String DB_NAME;
+    public static final int DB_VERSION;
+}
+
+-keepclassmembers class *{
+  @androidx.room.Query <methods>;
+}
+
+-keep class com.rinbows.soft.pranklam.data.AppDatabase{*;}
+-keep class com.rinbows.soft.pranklam.data.DataListDao{*;}
+-keep class com.rinbows.soft.pranklam.data.**{*;}
+
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+-keep class * implements com.google.gson.TypeAdapter { *; }
+-keep class com.google.gson.internal.LinkedTreeMap { *; }
