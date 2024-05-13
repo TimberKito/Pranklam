@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -53,6 +54,7 @@ class CollectFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this)[CollectViewModel::class.java]
         viewModel.getList().observe(viewLifecycleOwner, Observer {
+            binding.collectCard.isVisible = it.isEmpty()
             collectAdapter.updateData(it)
         })
     }

@@ -11,4 +11,5 @@
     <string name="setting_delete">Clear all my collections</string>
     <string name="link">https://play.google.com/store/apps/details?id=</string>
     <string name="time">00:00</string>
+    <string name="collect_null">You have no new collection!</string>
 </resources>

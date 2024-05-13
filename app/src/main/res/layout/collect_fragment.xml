@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_color_light"
-    android:orientation="vertical"
     tools:context=".fragment.CollectFragment">
 
     <View
+        android:id="@+id/collect_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentTop="true"
         android:background="@color/white" />
 
     <TextView
+        android:id="@+id/collect_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/collect_bar"
         android:background="@color/white"
         android:gravity="center_horizontal"
         android:paddingBottom="8dp"
@@ -26,6 +30,43 @@
         android:id="@+id/recycler_like"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/collect_title"
         android:paddingTop="4dp" />
 
-</LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/collect_card"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:visibility="visible"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:src="@drawable/svg_collect_null" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="@string/collect_null"
+                android:textColor="@color/theme_color_dark"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
