@@ -1,5 +1,5 @@
-应用名：
-包名：
+应用名：Sound Interesting
+包名：com.rinbowskito.soft.pranksound
 
 别名：key0_pranklamda
 密码：key123456
