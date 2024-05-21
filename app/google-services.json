@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "485501855202",
+    "project_id": "sound-interesting-prank-fart",
+    "storage_bucket": "sound-interesting-prank-fart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485501855202:android:f0427e7ebc50f2f7ca85bb",
+        "android_client_info": {
+          "package_name": "com.rinbowskito.soft.pranksound.we"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgc789toKSIMQTr6z96gVcusW9qdjkoeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

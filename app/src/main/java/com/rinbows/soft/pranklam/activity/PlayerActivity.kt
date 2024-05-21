@@ -5,9 +5,13 @@ import android.view.View
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.applovin.mediation.MaxAd
+import com.applovin.mediation.ads.MaxInterstitialAd
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.rinbows.soft.pranklam.R
+import com.rinbows.soft.pranklam.ad.AdListener
+import com.rinbows.soft.pranklam.ad.AdManager
 import com.rinbows.soft.pranklam.data.AppDatabase
 import com.rinbows.soft.pranklam.data.DataListDTO
 import com.rinbows.soft.pranklam.databinding.ActivityPlayerBinding
@@ -27,6 +31,8 @@ class PlayerActivity : BaseActivity(), View.OnClickListener {
     private var isSeekbarChaning: Boolean = false
     private var isDownload = false
     private var timer: Timer = Timer()
+
+    private lateinit var listAds: List<MaxInterstitialAd>
     override fun getActivityContentView(): View {
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         return binding.root
@@ -34,6 +40,7 @@ class PlayerActivity : BaseActivity(), View.OnClickListener {
 
     override fun initView() {
         super.initView()
+        listAds = AdManager.AdLoad(this@PlayerActivity)
         dataList = intent.getSerializableExtra(AppConstant.KEY_EXTRA) as DataListDTO
         initImg()
         initMediaPlayer()
@@ -55,7 +62,39 @@ class PlayerActivity : BaseActivity(), View.OnClickListener {
             e.printStackTrace()
         }
     }
+    private fun showMyAd() {
+        val checkCacheAd = AdManager.onCache(listAds)
+        if (checkCacheAd != null) {
+            AdManager.setAdListener(checkCacheAd, object : AdListener {
+                override fun onFail(ad: MaxAd?) {
+                    playAction()
 
+                }
+
+                override fun onSuccess() {
+
+                }
+
+                override fun onHidden() {
+                    playAction()
+
+                }
+
+            })
+            checkCacheAd.showAd()
+        } else {
+            playAction()
+        }
+    }
+
+    private fun playAction(){
+        if (isDownload) {
+            play()
+        } else {
+            binding.progressbar.isVisible = true
+            startDownload()
+        }
+    }
     private fun initMediaPlayer() {
         try {
             mediaPlayer = MediaPlayer()
@@ -144,12 +183,7 @@ class PlayerActivity : BaseActivity(), View.OnClickListener {
 
             binding.play -> {
                 if (!mediaPlayer.isPlaying) {
-                    if (isDownload) {
-                        play()
-                    } else {
-                        binding.progressbar.isVisible = true
-                        startDownload()
-                    }
+                    showMyAd()
                 }
             }
 

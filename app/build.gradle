@@ -2,8 +2,13 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
+    id("applovin-quality-service")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
-
+applovin {
+    apiKey "UK0pVyI1Qp5ri23EtwRT616OsxRF4fbPtnJ0c25bb3krzmSwnzuzvwmtkZzJ72zJxXBkUE0cUzC4Bq2gIAmSVK"
+}
 android {
     namespace 'com.rinbows.soft.pranklam'
     compileSdk 34
@@ -19,11 +24,11 @@ android {
 //    }
 
     defaultConfig {
-        applicationId "com.rinbowskito.soft.pranksound"
+        applicationId "com.rinbowskito.soft.pranksound.we"
         minSdk 22
         targetSdk 34
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -74,5 +79,14 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
 
     implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
+    implementation("com.applovin:applovin-sdk:+")
+    implementation("com.applovin.mediation:vungle-adapter:+")
+    implementation("com.applovin.mediation:bytedance-adapter:+")
+    implementation("com.applovin.mediation:mintegral-adapter:+")
+
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
 
 }
