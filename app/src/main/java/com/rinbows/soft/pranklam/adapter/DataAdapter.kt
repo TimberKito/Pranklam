@@ -35,6 +35,9 @@ class DataAdapter(
         return dataList.size
     }
 
+
+
+
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val dataListModel = dataList[position]
         holder.textItemName.text = dataListModel.title
